@@ -1,0 +1,5 @@
+De dónde saca Sandra el modelo de path-loss UMi? Por qué el UMi?
+
+Por qué max_distance es 500?
+
+Correlaciona los UEs para que los que estan cerca entre ellos tenga un efecto del shadowing más parecido, repaso rapido, no entiendo shortestdistances.
