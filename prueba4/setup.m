@@ -10,7 +10,8 @@ if (nargin>4)&&(seed>0)
     rng(seed)
 end
 
-squareLength = 1000;    %Tamaño del área de cobertura
+squareLength = 200;    %Tamaño del área de cobertura
+center_grid_factor = 0;   %Factor de rango de superficie donde puede haber un AP en el grid
 B = 20e6;   %Ancho de banda (Hz)
 noiseFigure = 7;    % dB
 noiseVariancedBm = -174 + 10*log10(B) + noiseFigure;    % Potencia de ruido calculada (dBm)
@@ -60,13 +61,51 @@ masterAPs = zeros(K,1);         % AP maestro por UE
 %% Setups
     
     % Posiciones aleatorias de los APs con distribución uniforme
-    APpositions = (rand(L,1) + 1i*rand(L,1)) * squareLength;                % Comparar con grid
+    %APpositions = (rand(L,1) + 1i*rand(L,1)) * squareLength;
+
+    %Posiciones de los APs en un grid
+    APperdim = sqrt(L);
+    APpositions = zeros (APperdim);
+    grid_long = squareLength/(APperdim);
+    center = grid_long/2;
+    center_grid_down = round(center * (1 - center_grid_factor));
+    center_grid_up = round(center * (1 + center_grid_factor));
+    count_f = 1i*0;
+    for i = 1:APperdim
+        count_c = 0;
+        for j = 1:APperdim
+            %APpositions(i, j) = center + 1i*center + count_c + count_f;
+            APpositions(i, j) = randi([center_grid_down, center_grid_up]) + 1i*(randi([center_grid_down, center_grid_up])) + count_c + count_f; 
+            count_c = count_c + grid_long;
+        end
+        count_f = count_f + 1i*grid_long;
+    end
+    APpositions = reshape(APpositions, L, 1);
 
     % Posiciones aleatorias de las RIS con distribución uniforme
-    RISpositions = (rand(S,1) + 1i*rand(S,1)) * squareLength;               % Comparar con grid en punto intermedio entre APs
-    
-    % Inicializar posiciones de los usuarios (UEs)
+    %RISpositions = (rand(S,1) + 1i*rand(S,1)) * squareLength;
+
+    %Posiciones de las RIS en las esquinas del grid
+    RISperdim = sqrt(L) + 1;
+    RISpositions = zeros (RISperdim);
+    center = 0;
+    count_f = 1i*0;
+    for i = 1:RISperdim
+        count_c = 0;
+        for j = 1:RISperdim
+            RISpositions(i, j) = center + 1i*center + count_c + count_f;
+            count_c = count_c + grid_long;
+        end
+        count_f = count_f + 1i*grid_long;
+    end
+    RISpositions = reshape(RISpositions, (RISperdim^2), 1);
+
+
+    % Posiciones de los usuarios (UEs)
     UEpositions = zeros(K,1);
+    for i = 1:K
+        UEpositions(i) = randi([0, squareLength]) + 1i*randi([0, squareLength]);
+    end
         
     % Calcular ubicaciones alternativas de los APs con wraparound
     wrapHorizontal = repmat([-squareLength 0 squareLength],[3 1]);
@@ -101,13 +140,12 @@ masterAPs = zeros(K,1);         % AP maestro por UE
     for k = 1:K
     
         % Posición aleatoria del usuario
-        UEposition = (rand(1,1) + 1i*rand(1,1)) * squareLength;
+        UEposition = UEpositions(k);
         
         % Calcular distancias 3D con altura de APs
         [distanceAPstoUE, whichpos] = min(abs(APpositionsWrapped - repmat(UEposition, size(APpositionsWrapped))), [], 2);
         dist_AP_UE(:,k) = sqrt(distanceVertical_AP_UE^2 + distanceAPstoUE.^2);
-        UEpositions(k) = UEposition;  %%NUEVO MIO
-        dist_RIS_UE(:,k) = sqrt(distanceVertical_RIS_UE^2 + abs(UEpositions(k) - RISpositions).^2);
+        dist_RIS_UE(:,k) = sqrt(distanceVertical_RIS_UE^2 + abs(UEposition - RISpositions).^2);
         % Modelo de path-loss UMi
         d_BP_eff = 4*h_BS_eff*h_UT_eff*((fc*1e9)./c);
 

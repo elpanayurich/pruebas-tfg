@@ -9,8 +9,8 @@ function [APlocations, UElocations] = env_setup(K, L, squareLength, nbrOfSetups)
     for i = 1:APperdim
         count_c = 0;
         for j = 1:APperdim
-            APlocations(i, j) = randi([10, 40]) + 1i*(randi([10, 40])) + count_c + count_f;
             %APlocations(i, j) = 25 + 1i*25 + count_c + count_f;
+            APlocations(i, j) = randi([10, 40]) + 1i*(randi([10, 40])) + count_c + count_f; 
             count_c = count_c + 50;
         end
         count_f = count_f + 1i*50;

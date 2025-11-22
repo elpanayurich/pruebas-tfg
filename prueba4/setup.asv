@@ -11,6 +11,7 @@ if (nargin>4)&&(seed>0)
 end
 
 squareLength = 1000;    %Tamaño del área de cobertura
+center_grid_factor = 0;   %Factor de rango de superficie donde puede haber un AP en el grid
 B = 20e6;   %Ancho de banda (Hz)
 noiseFigure = 7;    % dB
 noiseVariancedBm = -174 + 10*log10(B) + noiseFigure;    % Potencia de ruido calculada (dBm)
@@ -63,11 +64,30 @@ masterAPs = zeros(K,1);         % AP maestro por UE
     %APpositions = (rand(L,1) + 1i*rand(L,1)) * squareLength;
 
     %Posiciones de los APs en un grid
-    
+    APperdim = sqrt(L);
+    APpositions = zeros (APperdim);
+    center = squareLength/(APperdim*2);
+    center_grid_down = round(center * (1 - center_grid_factor));
+    center_grid_up = round(center * (1 + center_grid_factor));
+    count_f = 1i*0;
+    for i = 1:APperdim
+        count_c = 0;
+        for j = 1:APperdim
+            %APpositions(i, j) = center + 1i*center + count_c + count_f;
+            APpositions(i, j) = randi([center_grid_down, center_grid_up]) + 1i*(randi([center_grid_down, center_grid_up])) + count_c + count_f; 
+            count_c = count_c + 50;
+        end
+        count_f = count_f + 1i*50;
+    end
+    APpositions = reshape(APpositions, L, 1);
 
     % Posiciones aleatorias de las RIS con distribución uniforme
-    RISpositions = (rand(S,1) + 1i*rand(S,1)) * squareLength;               % Comparar con grid en punto intermedio entre APs
-    
+    %RISpositions = (rand(S,1) + 1i*rand(S,1)) * squareLength;
+
+    %Posiciones de las RIS en las esquinas del grid
+    RISperdim = sqrt(L) + 1;
+
+
     % Inicializar posiciones de los usuarios (UEs)
     UEpositions = zeros(K,1);
         

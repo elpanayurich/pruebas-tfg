@@ -6,14 +6,14 @@ clear;
 nbrOfSetups = 1;   % Número de escenarios
 nbrOfRealizations = 100;    % Número de realizaciones
 
-L = 16;          % Número de APs
+L = 16;         % Número de APs
 N_AP = 1;        % Antenas por AP
 N_RIS = 100;     % Número de elementos de la RIS
 K = 10;          % Número de UEs
 tau_c = 200;     % Longitud del bloque de coherencia
 tau_p = 10;      % Longitud del piloto
 p = 100;         % Potencia de transmisión (mW)
-fc = 3.5;        % Frecuencia (GHz)
+fc = 3.5;         % Frecuencia (GHz)
 LoS = 1;         % Linea de visión directa
 % Desviación estándar angular en el modelo de dispersión local (en radianes)
 ASD_varphi = deg2rad(15);  % angulo de azimut 
@@ -24,7 +24,7 @@ SE_PMMSE_DCC = zeros(K, nbrOfSetups, 6);
 
 %% Numero de RIS
 %S_values = [0,5,10,20,50,100];
-S_values = (sqrt(L) + 1)^2;
+S_values = sqrt(L) + 1)
 for s = 1:length(S_values)
     S = S_values(s);
     for n = 1:nbrOfSetups
