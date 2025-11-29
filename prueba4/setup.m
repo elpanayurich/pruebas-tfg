@@ -11,7 +11,7 @@ if (nargin>4)&&(seed>0)
 end
 
 squareLength = 1000;    %Tamaño del área de cobertura
-center_grid_factor = 0;   %Factor de rango de superficie donde puede haber un AP en el grid
+center_grid_factor = 0;   %Factor de rango de superficie donde puede haber un AP en el grid, entre 0 y 1
 B = 20e6;   %Ancho de banda (Hz)
 noiseFigure = 7;    % dB
 noiseVariancedBm = -174 + 10*log10(B) + noiseFigure;    % Potencia de ruido calculada (dBm)
