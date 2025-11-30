@@ -6,7 +6,7 @@ HMean_AP_RIS = zeros(N_AP*L,N_RIS*S);   % Canal LoS AP-RIS
 
 
 %Establecer el número de semilla si se especifica distinto de cero
-if (nargin>4)&&(seed>0)
+if (nargin>5)&&(seed>0)
     rng(seed)
 end
 

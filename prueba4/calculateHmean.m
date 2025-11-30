@@ -89,7 +89,7 @@ for  m = 1:M
     
     if X_Y == "AP_UE"
         % Matriz de correlación espacial (modelo de dispersión local)
-        if prenargin > 5
+        if prenargin > 6
             R_X_Y_1(:,:,m,n) = gain_NLoS_X_Y(m) * Rlocalscattering(N_AP, angletoUE_varphi, ASD_varphi, antennaSpacing);
             R_X_Y_2 = NaN;
         else
@@ -102,7 +102,7 @@ for  m = 1:M
         HMean_X_Y(N_AP*(m-1)+1:N_AP*m,n) = sqrt(gain_LoS_X_Y(m)) * arrayResp_X_Y;
         
     elseif X_Y == "RIS_UE"
-        if prenargin > 5
+        if prenargin > 6
             R_X_Y_1(:,:,m,n) = gain_NLoS_X_Y(m) * Rlocalscattering(N_RIS, angletoUE_varphi, ASD_varphi, antennaSpacing);
             R_X_Y_2 = NaN;
         else
@@ -116,7 +116,7 @@ for  m = 1:M
         
     elseif X_Y == "AP_RIS"
         % Matriz de correlación espacial (modelo de dispersión local)
-        if prenargin > 5
+        if prenargin > 6
             R_X_Y_1(:,:,m,n) = gain_NLoS_X_Y(m) * Rlocalscattering(N_AP, angle_varphi, ASD_varphi, antennaSpacing);
             R_X_Y_2(:,:,m,n) = gain_NLoS_X_Y(m) * Rlocalscattering(N_RIS, angle_varphi, ASD_varphi, antennaSpacing);
         else
