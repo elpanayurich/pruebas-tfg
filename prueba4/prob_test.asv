@@ -1,0 +1,19 @@
+L = 16;
+K = 10;
+S = 25;
+
+probLoS_AP_UE = zeros(L,K);     % Probabilidad de LoS entre AP y UE
+probLoS_AP_RIS = zeros(L,S);    % Probabilidad de LoS entre AP y RIS
+probLoS_RIS_UE = zeros(S,K);    % Probabilidad de LoS entre RIS y UE
+
+h_ut = 1.5;
+h_ris = 10;
+
+LoS = 2;
+if LoS==2
+    if h_ut<= 8
+        C = ((h_ut - 8)/10)^1.5;
+    end
+    if dist_AP_UE<=23
+        probLoS_AP_UE(:,1)=((18/dist_AP_UE) + exp(-(dist_AP_UE/63))*(1-(18/dist_AP_UE)))*(1+C*(5/4)*((dist_AP_UE/100)^3)*exp(-(dist_AP_UE/150)));
+end

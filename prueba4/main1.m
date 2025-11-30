@@ -3,7 +3,7 @@ close all;
 clear;
 
 %% Setup de simulación
-nbrOfSetups = 10;   % Número de escenarios
+nbrOfSetups = 1;   % Número de escenarios
 nbrOfRealizations = 100;    % Número de realizaciones
 
 L = 16;          % Número de APs
