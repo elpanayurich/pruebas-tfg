@@ -1,0 +1,5 @@
+Asignar RISs a usuarios cercanos es más efectivo que a usuarios lejanos.
+
+Asignar a los dos usuarios más cercanos es menos eficaz que a un usuario cercano.
+
+Asignar al usuario más cercano y si tiene otro cerca tiene potencial de acercarse a lo óptimo. Podría estipularse un rango, por ejemplo si el usuario tiene otro cerca a 10m o menos. Jugando con eso se podría sacar un valor óptimo igual.
