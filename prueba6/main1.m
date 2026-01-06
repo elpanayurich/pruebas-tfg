@@ -3,7 +3,7 @@ close all;
 clear;
 
 %% Setup de simulación
-nbrOfSetups = 1;   % Número de escenarios
+nbrOfSetups = 25;   % Número de escenarios
 nbrOfRealizations = 100;    % Número de realizaciones
 
 L = 16;          % Número de APs
@@ -31,7 +31,7 @@ for s = 1:length(S_values)
         disp(['Setup ' num2str(n) '/' num2str(nbrOfSetups) ' asistido por ' num2str(S) ' RIS']);
         
         % Generar escenario
-        seed = randi(10000);
+        seed = 20;
         [R_AP_UE,R_AP_RIS1,R_AP_RIS2,R_RIS_UE,pilotIndex,D,HMean_AP_UE, HMean_AP_RIS, HMean_RIS_UE, probLoS_AP_UE, probLoS_RIS_UE] = setup(L,K,N_AP,N_RIS,tau_p,seed,ASD_varphi,LoS,fc,S);
         
         % Asignacion de RIS

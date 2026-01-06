@@ -1,0 +1,7 @@
+Para lanzar cálculos con la GPU se necesita Parallel Computing Toolbox.
+
+En https://es.mathworks.com/help/parallel-computing/gpuarray.html ver todo sobre gpuArrays.
+
+Conseguido un ~3.75x de rendimiento usando GPU arrays, hay arrays que deben procesarse en la CPU (de pequeña dimensión)
+ya que una llamada a la GPU y vuelta es costosa. Se usan las gpuArrays para las grandes y por eso antes se necesita un proceso
+de vectorización (pasar bucles a vectores, consiguiendo una sola llamada a la GPU en vez de muchas).

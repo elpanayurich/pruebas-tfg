@@ -31,14 +31,14 @@ for s = 1:length(S_values)
         disp(['Setup ' num2str(n) '/' num2str(nbrOfSetups) ' asistido por ' num2str(S) ' RIS']);
         
         % Generar escenario
-        seed = randi(10000);
-        [R_AP_UE,R_AP_RIS1,R_AP_RIS2,R_RIS_UE,pilotIndex,D,HMean_AP_UE, HMean_AP_RIS, HMean_RIS_UE, probLoS_AP_UE, probLoS_RIS_UE] = setup(L,K,N_AP,N_RIS,tau_p,seed,ASD_varphi,LoS,fc,S);
+        seed = randi(1000);
+        [R_AP_UE,R_AP_RIS1,R_AP_RIS2,R_RIS_UE,pilotIndex,D,HMean_AP_UE, HMean_AP_RIS, HMean_RIS_UE, probLoS_AP_UE, probLoS_RIS_UE, dist_RIS_UE, UEpositions] = setup(L,K,N_AP,N_RIS,tau_p,seed,ASD_varphi,LoS,fc,S);
         
         % Asignacion de RIS
         if S == 0
             risAssignment = [];
         else
-            risAssignment = assignRIS(probLoS_AP_UE, probLoS_RIS_UE);
+            risAssignment = assignRIS_close2_updt(dist_RIS_UE, UEpositions);
         end
         %Asignar todos los usuarios a todas las RISs
         %  for aux = 1:S
@@ -69,21 +69,12 @@ set(gca,'fontsize',16);
 
 % P-MMSE
 aux1 = SE_PMMSE_DCC(:,:,1); % 0 RIS
-aux2 = SE_PMMSE_DCC(:,:,2); % 5 RIS
-aux3 = SE_PMMSE_DCC(:,:,3); % 10 RIS
-aux4 = SE_PMMSE_DCC(:,:,4); % 20 RIS
-aux5 = SE_PMMSE_DCC(:,:,5); % 50 RIS
-aux6 = SE_PMMSE_DCC(:,:,6); % 100 RIS
 
 plot(sort(aux1(:)), linspace(0,1,K*nbrOfSetups), 'k-', 'LineWidth', 2);
-plot(sort(aux2(:)), linspace(0,1,K*nbrOfSetups), 'r-',  'LineWidth', 2);
-plot(sort(aux3(:)), linspace(0,1,K*nbrOfSetups), 'g-', 'LineWidth', 2);
-plot(sort(aux4(:)), linspace(0,1,K*nbrOfSetups), 'b-', 'LineWidth', 2);
-plot(sort(aux5(:)), linspace(0,1,K*nbrOfSetups), 'm-',  'LineWidth', 2);
-plot(sort(aux6(:)), linspace(0,1,K*nbrOfSetups), 'y-', 'LineWidth', 2);
 
 % Ejes y leyenda
 xlabel('Spectral efficiency [bit/s/Hz]', 'Interpreter', 'Latex');
 ylabel('CDF', 'Interpreter', 'Latex');
-legend({'P-MMSE 0 RIS', 'P-MMSE 5 RIS', 'P-MMSE 10 RIS', 'P-MMSE 20 RIS', 'P-MMSE 50 RIS', 'P-MMSE 100 RIS'}, 'Interpreter', 'Latex', 'Location', 'SouthEast');
+legend_text = sprintf('P-MMSE %d RIS', S);
+legend({legend_text}, 'Interpreter', 'Latex', 'Location', 'SouthEast');
 xlim([0 25]);
