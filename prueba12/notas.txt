@@ -1,0 +1,10 @@
+Parece que la simulación demuestra que asignar todas las RISs a todos los usuarios es una mala idea.
+
+Entre asignar a una RIS (en este escenario por lo menos) a su usuario más cercano o a los dos usuarios más cercanos, parece que lo mejor es solo a uno.
+
+Asignando a todas las RISs el usuario más cercano y luego asignando otro si está en un radio determinado mejora un poco a ciertos usuarios y
+empeora otro poco a otros. No parece sacar resultados mucho mejores o peores de asignar el usuario más cercano a todas las RISs (si coges un threshold decente).
+
+Pregunta: ¿Y si dejamos RISs sin usuarios asignados? Algunas RISs están muy lejos de algunos usuarios, consumiendo recursos pero no aumentando mucho la señal...
+
+Pregunta: ¿Este escenario sería realista? Ahora tiene 10 usuarios, pero si tuviera muchos más usuarios que RISs igual saldrían diferentes resultados.
