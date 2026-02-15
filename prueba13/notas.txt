@@ -1,0 +1,3 @@
+La idea de que si un usuario se situa a una distancia X (en este caso calculada como 31.125m geométricamente) de un AP completamente centrado, 
+nunca le vamos a asignar una RIS. El efecto es más relevante cuanto menor sea tau_c. Con este método en cada simulación nos podemos ahorrar a un
+determinado 

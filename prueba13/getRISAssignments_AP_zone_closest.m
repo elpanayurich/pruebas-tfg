@@ -1,0 +1,76 @@
+function [RISassignment_array, assigned_counts, unassigned_counts] = getRISAssignments_AP_zone_closest(file_indices, max_dist, ap_dist)
+    % GETRISASSIGNMENTS_CLOSEST_UNASSIGNED_RISS Loads distance matrices and returns 
+    % the closest user index. 
+    % If the closest user is > max_dist, no user is assigned.
+    % If the user is ap_dist or closer to an AP it will not use RISs.
+    % Input: file_indices (e.g., 1:7)
+    % Output: 
+    %   RISassignment_array: 25xN cell array (each cell contains 0 or 1 index)
+    %   assigned_counts: 1xN array with the number of assigned RISs per file
+    %   unassigned_counts: 1xN array with the number of unassigned RISs per file
+    
+    num_files = length(file_indices);
+    num_ap = 16;
+    num_ris = 25;
+    RISassignment_array = cell(num_ris, num_files);
+    assigned_counts = zeros(1, num_files);
+    unassigned_counts = zeros(1, num_files);
+    
+    for i = 1:num_files
+        X = file_indices(i);
+        filename = sprintf('positions/positions%d.mat', X);
+        
+        if exist(filename, 'file')
+            data = load(filename);
+            
+            if isfield(data, 'dist_RIS_UE')
+                dist_matrix = data.dist_RIS_UE;
+                [min_vals, assigned_users] = min(dist_matrix, [], 2);
+                
+                curr_assigned = 0;
+                curr_unassigned = 0;
+                
+                for ris_idx = 1:num_ris
+                    if min_vals(ris_idx) > max_dist
+                        RISassignment_array{ris_idx, i} = [];
+                        curr_unassigned = curr_unassigned + 1;
+                    else
+                        RISassignment_array{ris_idx, i} = assigned_users(ris_idx);
+                        curr_assigned = curr_assigned + 1;
+                    end
+                end
+                
+                
+                
+                
+            else
+                warning('Variable "dist_RIS_UE" not found in %s', filename);
+            end
+
+            if isfield(data, 'dist_AP_UE')
+                dist_matrix_AP = data.dist_AP_UE;
+                [min_vals, assigned_users] = min(dist_matrix_AP, [], 2);
+
+                for ap_idx = 1:num_ap
+                    if min_vals(ap_idx) < ap_dist
+                        targer_user = assigned_users(ap_idx);
+                        colIndex = i;
+                        mask = cellfun(@(x) isequal(x, targer_user), RISassignment_array(:, colIndex));
+                        times_user_is_assigned = sum(mask);
+                        RISassignment_array(mask, colIndex) = {[]};
+                        curr_assigned = curr_assigned - times_user_is_assigned;
+                        curr_unassigned = curr_unassigned + times_user_is_assigned;
+                        fprintf('Times %d', times_user_is_assigned);
+                    end
+                end
+                assigned_counts(i) = curr_assigned;
+                unassigned_counts(i) = curr_unassigned;
+                fprintf('Processed: positions%d.mat (Assigned: %d, Unassigned: %d)\n', X, curr_assigned, curr_unassigned);
+            else
+                 warning('Variable "dist_AP_UE" not found in %s', filename);
+            end
+        else
+            warning('File %s not found. Skipping...', filename);
+        end
+    end
+end
