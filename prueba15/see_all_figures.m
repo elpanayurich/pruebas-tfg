@@ -7,7 +7,7 @@ hold(masterAx, 'on');
 grid(masterAx, 'on');
 
 %% 2. File Identification
-figDir = 'figures/'; 
+figDir = 'figures/factor100_tauc10k'; 
 dirData = dir(fullfile(figDir, '*.fig'));
 if isempty(dirData); error('No .fig files found in %s', figDir); end
 
@@ -22,12 +22,13 @@ colors(1, :) = [1 1 1];
 allLines = gobjects(1, numFiles);
 
 %% 4. Import and Tag Lines
+meansList = zeros(1, numFiles); % Pre-allocate for performance
+
 for i = 1:numFiles
     tempFig = openfig(fullfile(figDir, figFiles{i}), 'invisible');
     srcAx = findobj(tempFig, 'type', 'axes');
     
     if ~isempty(srcAx)
-        % Find only line objects to avoid copying text or legends
         srcLines = findobj(srcAx(1).Children, 'type', 'line');
         hLine = copyobj(srcLines, masterAx);
         
@@ -36,9 +37,22 @@ for i = 1:numFiles
             'UserData', colors(i,:)); 
         
         allLines(i) = hLine(1);
+        
+        % Calculate mean for this specific file
+        meansList(i) = mean(hLine(1).XData, 'omitnan');
     end
     close(tempFig);
 end
+
+%% 4.5 Identify and Print "Best" Mean
+% Assuming "better" mean is the highest value. 
+% (If lower is better for your data, use min instead of max)
+[bestVal, bestIdx] = max(meansList); 
+
+fprintf('\n--- Performance Summary ---\n');
+fprintf('The file with the best mean is: **%s**\n', labels{bestIdx});
+fprintf('Value: %.4f\n', bestVal);
+fprintf('---------------------------\n');
 
 %% 5. Create Interactive Legend
 lgd = legend(allLines, labels, 'Location', 'southoutside', 'NumColumns', 5, ...
@@ -49,13 +63,22 @@ xlabel('X-Axis', 'Color', 'w'); ylabel('Y-Axis', 'Color', 'w');
 title('Click Legend Labels to Highlight Lines', 'Color', 'w');
 
 %% 6. Data Cursor (Fixed Error Logic)
-% Force MATLAB to finish drawing before enabling interactive modes
 drawnow; 
-
+pause(0.1); % Give the UI a millisecond to breathe
 dcm = datacursormode(masterFig);
-% Set the update function BEFORE enabling to avoid the "resetInteractions" crash
+
+% Ensure we are targeting the right figure explicitly
 set(dcm, 'UpdateFcn', @(src, event) myDataCursorCallback(src, event, allLines));
-set(dcm, 'Enable', 'on');
+
+try
+    % This is the line that usually crashes; wrapping in try/catch 
+    % prevents the whole script from failing if the toolbar is cranky.
+    set(dcm, 'Enable', 'on');
+catch
+    % Fallback: Force focus and try one last time
+    figure(masterFig);
+    set(dcm, 'Enable', 'on');
+end
 
 hold(masterAx, 'off');
 
