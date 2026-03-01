@@ -1,5 +1,4 @@
 function [RISassignment, tau_p] = assignRIS_radius(file_index, max_dist, ap_dist, N_RIS, K, L, S)
-   
     num_ap = L;
     num_ris = S;
     

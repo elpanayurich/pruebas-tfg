@@ -20,16 +20,13 @@ h_BS = 10;                     % Estación base de antena
 h_UT = 1.5;                    % Antena usuario
 h_RIS = 10;                    % Altura de la RIS
 squareLength = 1000;           % Tamaño del área de cobertura
-center_grid_factor = 0.5;        % Factor de rango de superficie donde puede haber un AP en el grid, entre 0 y 1
+center_grid_factor = 0.5;      % Factor de rango de superficie donde puede haber un AP en el grid, entre 0 y 1
 user_percentage = 0.1;         % El radio de la RIS dependerá del porcentaje de usuarios al cual queremos dar mejor calidad de señal
 RIS_radius = 60;               % Radio en el que las RISs van a proveer de conexión a un UE
+AP_radius = 31.125;            % Distancia a máxima entre un AP y un UE que inhabilita al UE conectarse a una RIS
 
 % Desviación estándar angular en el modelo de dispersión local (en radianes)
 ASD_varphi = deg2rad(15);  % angulo de azimut
-
-% Datos provisionales radio conectividad RIS y AP
-%RIS_radius = 60;
-AP_radius = 31.125;
 
 % Arreglos 3D para guardar resultados por tipo de canal
 SE_PMMSE_DCC = zeros(K, nbrOfSetups, 6);

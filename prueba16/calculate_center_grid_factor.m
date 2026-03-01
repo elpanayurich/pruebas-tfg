@@ -1,6 +1,8 @@
 function [calculated_center_grid_factor] = calculate_center_grid_factor(APpositions, L, squareLength)
     % Con está función calculamos el factor de centrado dadas las
-    % posiciones de los APs. Conseguimos
+    % posiciones de los APs. Conseguimos estimar, dado un escenario,
+    % el center_grid_factor para poder asignar los radios de las RIS
+    % de forma acorde.
     APperdim = sqrt(L);
     APpositions_centered = zeros (APperdim);
     grid_long = squareLength/(APperdim);

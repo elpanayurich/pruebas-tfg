@@ -7,7 +7,7 @@ for f = 1:length(factors)
         clearvars -except variable increment factors f s center_grid_factor;
         increment = increment + 10;
         RIS_radius = increment;
-        main1; 
+        main1;
     end
     grid_val = center_grid_factor * 100;
     folderName = sprintf('figures/factor%.0f_tauc10k', grid_val);
