@@ -1,0 +1,99 @@
+=================================================================
+   ANALISIS: RADIO OPTIMO (CDF=0.1) vs TAMAÑO DEL AREA (Square)
+=================================================================
+Factor 0.5 | Modo Exclusivo | 50 Setups
+
+--- SQUARE: 250 m ---
+  Radio   0 m -> SE = 25.6194
+  Radio  10 m -> SE = 25.6793
+  Radio  20 m -> SE = 25.9227
+  Radio  30 m -> SE = 25.5577
+  Radio  40 m -> SE = 25.3788
+  Radio  50 m -> SE = 25.3106
+  Radio  60 m -> SE = 25.2986
+=> OPTIMO PARA 250 m: Radio = 20 m (SE = 25.9227)
+
+--- SQUARE: 500 m ---
+  Radio   0 m -> SE = 19.7129
+  Radio  10 m -> SE = 19.7732
+  Radio  20 m -> SE = 19.9228
+  Radio  30 m -> SE = 20.1127
+  Radio  40 m -> SE = 19.9343
+  Radio  50 m -> SE = 19.6946
+  Radio  60 m -> SE = 19.4513
+=> OPTIMO PARA 500 m: Radio = 30 m (SE = 20.1127)
+
+--- SQUARE: 750 m ---
+  Radio   0 m -> SE = 16.1735
+  Radio  10 m -> SE = 16.1918
+  Radio  20 m -> SE = 16.3503
+  Radio  30 m -> SE = 16.5433
+  Radio  40 m -> SE = 16.6779
+  Radio  50 m -> SE = 16.6893
+  Radio  60 m -> SE = 16.5858
+=> OPTIMO PARA 750 m: Radio = 50 m (SE = 16.6893)
+
+--- SQUARE: 1000 m ---
+  Radio  50 m -> SE = 14.0839
+  Radio  60 m -> SE = 14.1260
+  Radio  70 m -> SE = 14.0953
+  Radio  80 m -> SE = 14.0749
+  Radio  90 m -> SE = 13.9768
+  Radio 100 m -> SE = 13.9401
+=> OPTIMO PARA 1000 m: Radio = 60 m (SE = 14.1260)
+
+--- SQUARE: 1250 m ---
+  Radio  50 m -> SE = 11.7549
+  Radio  60 m -> SE = 11.8492
+  Radio  70 m -> SE = 11.9452
+  Radio  80 m -> SE = 11.9816
+  Radio  90 m -> SE = 11.9547
+  Radio 100 m -> SE = 11.9672
+=> OPTIMO PARA 1250 m: Radio = 80 m (SE = 11.9816)
+
+--- SQUARE: 1500 m ---
+  Radio  50 m -> SE = 10.3879
+  Radio  60 m -> SE = 10.5401
+  Radio  70 m -> SE = 10.5916
+  Radio  80 m -> SE = 10.6408
+  Radio  90 m -> SE = 10.6474
+  Radio 100 m -> SE = 10.6426
+=> OPTIMO PARA 1500 m: Radio = 90 m (SE = 10.6474)
+
+--- SQUARE: 1750 m ---
+  Radio  70 m -> SE = 8.9211
+  Radio  80 m -> SE = 9.0290
+  Radio  90 m -> SE = 9.1959
+  Radio 100 m -> SE = 9.1781
+  Radio 110 m -> SE = 9.1190
+  Radio 120 m -> SE = 9.1190
+  Radio 130 m -> SE = 9.1281
+  Radio 140 m -> SE = 9.0551
+=> OPTIMO PARA 1750 m: Radio = 90 m (SE = 9.1959)
+
+--- SQUARE: 2000 m ---
+  Radio  70 m -> SE = 7.5991
+  Radio  80 m -> SE = 7.6054
+  Radio  90 m -> SE = 7.7681
+  Radio 100 m -> SE = 8.0265
+  Radio 110 m -> SE = 7.8016
+  Radio 120 m -> SE = 7.8016
+  Radio 130 m -> SE = 7.8129
+  Radio 140 m -> SE = 7.9609
+  Radio 150 m -> SE = 7.9531
+=> OPTIMO PARA 2000 m: Radio = 140 m (SE = 7.8519)
+
+=================================================================
+TABLA RESUMEN FINAL
+=================================================================
+SquareLength [m] | Radio Optimo [m] | Mejor SE (CDF=0.1) [bit/s/Hz]
+-----------------------------------------------------------------
+250              | 20               | 25.9227
+500              | 30               | 20.1127
+750              | 50               | 16.6893
+1000             | 60               | 14.1260
+1250             | 80               | 11.9816
+1500             | 90               | 10.6474
+1750             | 90               | 9.1959
+2000             | 100              | 8.0265
+=================================================================

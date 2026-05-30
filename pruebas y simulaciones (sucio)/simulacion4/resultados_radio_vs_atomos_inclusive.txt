@@ -1,0 +1,75 @@
+=================================================================
+   ANALISIS: RADIO OPTIMO (CDF=0.1) vs CANTIDAD DE ATOMOS (N_RIS)
+=================================================================
+Factor 0.5 | Modo Inclusivo | 50 Setups
+
+--- ATOMOS: 4 ---
+  Radio 190 m -> SE = 10.7123
+  Radio 200 m -> SE = 10.7963
+  Radio 210 m -> SE = 10.8002
+  Radio 220 m -> SE = 10.7975
+  Radio 230 m -> SE = 10.7883
+  Radio 240 m -> SE = 10.7892
+  Radio 250 m -> SE = 10.8041
+=> OPTIMO PARA 4: Radio = 250 m (SE = 10.8041)
+
+--- ATOMOS: 16 ---
+  Radio 110 m -> SE = 12.3229
+  Radio 120 m -> SE = 12.3165
+  Radio 130 m -> SE = 12.4323
+  Radio 140 m -> SE = 12.4799
+  Radio 150 m -> SE = 12.4777
+  Radio 160 m -> SE = 12.4858
+  Radio 170 m -> SE = 12.5054
+=> OPTIMO PARA 16: Radio = 170 m (SE = 12.5054)
+
+--- ATOMOS: 32 ---
+  Radio  50 m -> SE = 13.0752
+  Radio  60 m -> SE = 13.1842
+  Radio  70 m -> SE = 13.2427
+  Radio  80 m -> SE = 13.2133
+  Radio  90 m -> SE = 13.2327
+  Radio 100 m -> SE = 13.1908
+  Radio 110 m -> SE = 13.1594
+=> OPTIMO PARA 32: Radio = 70 m (SE = 13.2427)
+
+--- ATOMOS: 64 ---
+  Radio  40 m -> SE = 13.9637
+  Radio  50 m -> SE = 14.0959
+  Radio  60 m -> SE = 14.1521
+  Radio  70 m -> SE = 14.1562
+  Radio  80 m -> SE = 14.0463
+  Radio  90 m -> SE = 13.9172
+  Radio 100 m -> SE = 13.8418
+=> OPTIMO PARA 64: Radio = 70 m (SE = 14.1562)
+
+--- ATOMOS: 128 ---
+  Radio  20 m -> SE = 14.6567
+  Radio  30 m -> SE = 14.7568
+  Radio  40 m -> SE = 14.8363
+  Radio  50 m -> SE = 14.9600
+  Radio  60 m -> SE = 14.9326
+  Radio  70 m -> SE = 14.7848
+  Radio  80 m -> SE = 14.5821
+=> OPTIMO PARA 128: Radio = 50 m (SE = 14.9600)
+
+--- ATOMOS: 256 ---
+  Radio  10 m -> SE = 15.5514
+  Radio  20 m -> SE = 15.6140
+  Radio  30 m -> SE = 15.6082
+  Radio  40 m -> SE = 15.6082
+  Radio  50 m -> SE = 15.4718
+=> OPTIMO PARA 256: Radio = 20 m (SE = 15.6140)
+
+=================================================================
+TABLA RESUMEN FINAL
+=================================================================
+N_RIS | Radio Optimo [m] | Mejor SE (CDF=0.1) [bit/s/Hz]
+-----------------------------------------------------------------
+4                | 250              | 10.8041
+16               | 170              | 12.5054
+32               | 70               | 13.2427
+64               | 70               | 14.1562
+128              | 50               | 14.9600
+256              | 20               | 15.6140
+=================================================================

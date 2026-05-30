@@ -1,0 +1,38 @@
+=================================================================================
+ANALISIS DE ROBUSTEZ: RANGO 50m - 80m (Modo Exclusivo, Factor 0.5, 50 Setups)
+=================================================================================
+
+--- SEMILLA GLOBAL: 42 ---
+  Radio = 50 m  --->  SE = 14.0692 bit/s/Hz
+  Radio = 55 m  --->  SE = 14.0516 bit/s/Hz
+  Radio = 60 m  --->  SE = 14.0907 bit/s/Hz
+  Radio = 65 m  --->  SE = 14.1009 bit/s/Hz
+  Radio = 70 m  --->  SE = 14.1080 bit/s/Hz
+  Radio = 75 m  --->  SE = 14.0692 bit/s/Hz
+  Radio = 80 m  --->  SE = 14.0310 bit/s/Hz
+
+  => Mejor Radio en el rango: 70 m (SE: 14.1080)
+  => Peor Radio en el rango:  80 m (SE: 14.0310)
+  => Diferencia máxima: 0.0770 bit/s/Hz (0.55%)
+
+--- SEMILLA GLOBAL: 999 ---
+  Radio = 50 m  --->  SE = 14.0692 bit/s/Hz
+  Radio = 55 m  --->  SE = 14.0516 bit/s/Hz
+  Radio = 60 m  --->  SE = 14.0907 bit/s/Hz
+  Radio = 65 m  --->  SE = 14.1009 bit/s/Hz
+  Radio = 70 m  --->  SE = 14.1080 bit/s/Hz
+  Radio = 75 m  --->  SE = 14.0692 bit/s/Hz
+  Radio = 80 m  --->  SE = 14.0310 bit/s/Hz
+
+  => Mejor Radio en el rango: 70 m (SE: 14.1080)
+  => Peor Radio en el rango:  80 m (SE: 14.0310)
+  => Diferencia máxima: 0.0770 bit/s/Hz (0.55%)
+
+=================================================================================
+CONCLUSION:
+La diferencia de Eficiencia Espectral entre el mejor y el peor radio dentro de
+la ventana operativa de 50m a 80m es mínima (inferior al 2% en todos los casos).
+Esto demuestra que el sistema es muy robusto: no es crítico afinar el radio al
+metro exacto, ya que cualquier valor dentro de este rango proporciona un 
+rendimiento casi idéntico y óptimo para los usuarios con peor cobertura.
+=================================================================================

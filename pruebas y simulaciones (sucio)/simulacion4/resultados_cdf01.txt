@@ -1,0 +1,16 @@
+=== Analisis de Mejor Radio a CDF=0.1 (Modo Exclusivo) ===
+Fecha: 25-May-2026 22:51:28
+
+Factor 0.0: Mejor radio = 50 m (Eficiencia Espectral = 14.4257 bit/s/Hz)
+Factor 0.1: Mejor radio = 60 m (Eficiencia Espectral = 14.3742 bit/s/Hz)
+Factor 0.2: Mejor radio = 60 m (Eficiencia Espectral = 14.4364 bit/s/Hz)
+Factor 0.3: Mejor radio = 60 m (Eficiencia Espectral = 14.4116 bit/s/Hz)
+Factor 0.4: Mejor radio = 80 m (Eficiencia Espectral = 14.3370 bit/s/Hz)
+Factor 0.5: Mejor radio = 60 m (Eficiencia Espectral = 14.3660 bit/s/Hz)
+Factor 0.6: Mejor radio = 60 m (Eficiencia Espectral = 14.4195 bit/s/Hz)
+Factor 0.7: Mejor radio = 80 m (Eficiencia Espectral = 14.5210 bit/s/Hz)
+Factor 0.8: Mejor radio = 70 m (Eficiencia Espectral = 14.6386 bit/s/Hz)
+Factor 0.9: Mejor radio = 70 m (Eficiencia Espectral = 14.7908 bit/s/Hz)
+Factor 1.0: Mejor radio = 60 m (Eficiencia Espectral = 14.8655 bit/s/Hz)
+
+------------------------------------------------------------

@@ -1,0 +1,34 @@
+=================================================================
+   VALIDACION DE LA FORMULA DE ASIGNACION DE RIS
+=================================================================
+
+ESCENARIO 1:
+  Parametros: tau_c = 15000 | Area = 1250 m | N_RIS = 32
+  Distancia entre APs (D_AP): 312.5 m
+  Radio Calculado (Formula):  110.5 m
+  Radio Optimo (Simulado):    80 m (SE: 11.3658)
+-----------------------------------------------------------------
+ESCENARIO 2:
+  Parametros: tau_c = 5000 | Area = 800 m | N_RIS = 64
+  Distancia entre APs (D_AP): 200.0 m
+  Radio Calculado (Formula):  34.9 m
+  Radio Optimo (Simulado):    20 m (SE: 15.9800)
+-----------------------------------------------------------------
+ESCENARIO 3:
+  Parametros: tau_c = 20000 | Area = 1500 m | N_RIS = 128
+  Distancia entre APs (D_AP): 375.0 m
+  Radio Calculado (Formula):  66.3 m
+  Radio Optimo (Simulado):    110 m (SE: 11.9794)
+-----------------------------------------------------------------
+ESCENARIO 4:
+  Parametros: tau_c = 8000 | Area = 600 m | N_RIS = 16
+  Distancia entre APs (D_AP): 150.0 m
+  Radio Calculado (Formula):  67.7 m
+  Radio Optimo (Simulado):    110 m (SE: 17.1537)
+-----------------------------------------------------------------
+ESCENARIO 5:
+  Parametros: tau_c = 12000 | Area = 1000 m | N_RIS = 256
+  Distancia entre APs (D_AP): 250.0 m
+  Radio Calculado (Formula):  31.2 m
+  Radio Optimo (Simulado):    30 m (SE: 16.1961)
+-----------------------------------------------------------------

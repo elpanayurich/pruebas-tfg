@@ -1,0 +1,32 @@
+=================================================================
+   VALIDACION FINAL DE LA ECUACION EMPIRICA UNIFICADA
+=================================================================
+
+ESCENARIO 1: tau_c=5000 | Area=500m (D_AP=125.0) | N_RIS=32
+  Radio Predicho (Formula): 31.2 m (Usamos 30 m)
+  Radio Optimo (Simulado):  20 m
+  SE con Formula:           19.3954
+  SE Optima:                19.4444
+  Perdida SE:               0.25%
+-----------------------------------------------------------------
+ESCENARIO 2: tau_c=15000 | Area=1500m (D_AP=375.0) | N_RIS=128
+  Radio Predicho (Formula): 81.2 m (Usamos 80 m)
+  Radio Optimo (Simulado):  80 m
+  SE con Formula:           11.7802
+  SE Optima:                11.7802
+  Perdida SE:               0.00%
+-----------------------------------------------------------------
+ESCENARIO 3: tau_c=8000 | Area=800m (D_AP=200.0) | N_RIS=16
+  Radio Predicho (Formula): 89.4 m (Usamos 90 m)
+  Radio Optimo (Simulado):  100 m
+  SE con Formula:           14.7534
+  SE Optima:                14.7586
+  Perdida SE:               0.03%
+-----------------------------------------------------------------
+ESCENARIO 4: tau_c=20000 | Area=1000m (D_AP=250.0) | N_RIS=256
+  Radio Predicho (Formula): 44.2 m (Usamos 40 m)
+  Radio Optimo (Simulado):  60 m
+  SE con Formula:           16.0155
+  SE Optima:                16.1504
+  Perdida SE:               0.84%
+-----------------------------------------------------------------

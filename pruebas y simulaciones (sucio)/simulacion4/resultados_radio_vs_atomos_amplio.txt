@@ -1,0 +1,96 @@
+=================================================================
+   ANALISIS: RADIO OPTIMO (CDF=0.1) vs CANTIDAD DE ATOMOS (N_RIS)
+=================================================================
+Factor 0.5 | Modo Inclusivo (Rango Amplio) | 50 Setups
+
+--- ATOMOS: 4 ---
+  Radio  10 m -> SE = 10.0826
+  Radio  30 m -> SE = 10.1462
+  Radio  50 m -> SE = 10.2749
+  Radio  70 m -> SE = 10.3625
+  Radio  90 m -> SE = 10.4912
+  Radio 110 m -> SE = 10.5703
+  Radio 130 m -> SE = 10.6670
+  Radio 150 m -> SE = 10.6938
+  Radio 170 m -> SE = 10.7051
+  Radio 190 m -> SE = 10.7123
+  Radio 210 m -> SE = 10.8002
+  Radio 230 m -> SE = 10.7883
+  Radio 250 m -> SE = 10.8041
+=> OPTIMO PARA 4: Radio = 250 m (SE = 10.8041)
+
+--- ATOMOS: 16 ---
+  Radio  10 m -> SE = 11.7408
+  Radio  30 m -> SE = 11.8916
+  Radio  50 m -> SE = 12.1311
+  Radio  70 m -> SE = 12.2713
+  Radio  90 m -> SE = 12.2873
+  Radio 110 m -> SE = 12.3229
+  Radio 130 m -> SE = 12.4323
+  Radio 150 m -> SE = 12.4777
+  Radio 170 m -> SE = 12.5054
+  Radio 190 m -> SE = 12.5207
+  Radio 210 m -> SE = 12.5051
+  Radio 230 m -> SE = 12.5038
+  Radio 250 m -> SE = 12.5026
+=> OPTIMO PARA 16: Radio = 190 m (SE = 12.5207)
+
+--- ATOMOS: 32 ---
+  Radio  10 m -> SE = 12.6722
+  Radio  30 m -> SE = 12.8908
+  Radio  50 m -> SE = 13.0826
+  Radio  70 m -> SE = 13.1899
+  Radio  90 m -> SE = 13.1868
+  Radio 110 m -> SE = 13.1465
+  Radio 130 m -> SE = 13.1005
+  Radio 150 m -> SE = 13.0811
+  Radio 170 m -> SE = 13.0413
+  Radio 190 m -> SE = 12.9667
+  Radio 210 m -> SE = 13.0311
+  Radio 230 m -> SE = 12.8635
+  Radio 250 m -> SE = 12.8527
+=> OPTIMO PARA 32: Radio = 70 m (SE = 13.1899)
+
+--- ATOMOS: 64 ---
+  Radio  10 m -> SE = 13.6757
+  Radio  30 m -> SE = 13.9089
+  Radio  50 m -> SE = 14.1115
+  Radio  70 m -> SE = 14.1409
+  Radio  90 m -> SE = 13.9097
+  Radio 110 m -> SE = 13.7758
+  Radio 130 m -> SE = 13.5098
+  Radio 150 m -> SE = 13.4138
+  Radio 170 m -> SE = 13.3030
+  Radio 190 m -> SE = 13.2176
+  Radio 210 m -> SE = 12.9899
+  Radio 230 m -> SE = 12.9513
+  Radio 250 m -> SE = 12.8455
+=> OPTIMO PARA 64: Radio = 70 m (SE = 14.1409)
+
+--- ATOMOS: 128 ---
+  Radio  10 m -> SE = 14.5299
+  Radio  30 m -> SE = 14.7283
+  Radio  50 m -> SE = 14.8806
+  Radio  70 m -> SE = 14.6111
+  Radio  90 m -> SE = 14.0429
+  Radio 110 m -> SE = 13.7936
+  Radio 130 m -> SE = 13.4875
+  Radio 150 m -> SE = 13.1409
+  Radio 170 m -> SE = 12.7529
+  Radio 190 m -> SE = 12.4979
+  Radio 210 m -> SE = 12.1797
+  Radio 230 m -> SE = 11.9382
+  Radio 250 m -> SE = 11.7274
+=> OPTIMO PARA 128: Radio = 50 m (SE = 14.8806)
+
+--- ATOMOS: 256 ---
+  Radio  10 m -> SE = 15.6125
+  Radio  30 m -> SE = 15.7457
+  Radio  50 m -> SE = 15.6752
+  Radio  70 m -> SE = 14.8725
+  Radio  90 m -> SE = 13.9141
+  Radio 110 m -> SE = 13.0915
+  Radio 130 m -> SE = 12.2187
+  Radio 150 m -> SE = 11.3978
+  Radio 170 m -> SE = 10.7314
+  Radio 190 m -> SE = 10.1369

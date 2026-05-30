@@ -1,0 +1,346 @@
+% --- RADIOS DE CONECTIVIDAD ---
+\subsection{Radios de conectividad}
+\label{sec:radios_conectividad_res}
+
+Dado que los resultados anteriores han determinado un rango muy pequeño sobre el
+cual continuar investigando, el siguiente nivel de complejidad que se analiza se centra
+en la introducción de los radios de conectividad al algoritmo.
+
+Una forma de limitar el gasto de recursos de estimación dedicados a las \gls{ris} es ofrecer
+este servicio únicamente a los usuarios que necesiten el soporte de las mismas. Esto se
+consigue limitando las distancias máximas de conexión entre usuarios y \gls{ris}. Para conseguir
+un resultado óptimo, sería ideal limitar por medio de un umbral
+de \gls{se} y no por distancia, pero con el fin de simplificar el concepto,
+se estudia el caso de limitación por distancia (cuyos resultados prácticamente no variarán en comparación
+con un umbral de \gls{se}).
+
+Una limitación por distancia como la mencionada, introduce el concepto de radios de
+conectividad entre usuarios y \gls{ris}. Asume que los usuarios que se encuentran lejos de
+un \gls{ap} tendrán generalmente una baja \gls{se} debido a la probabilidad de
+\gls{nlos}. Además, en el modelo en \textit{grid}, un usuario alejado de un \gls{ap} se encontrará inevitablemente
+más cerca de una \gls{ris}. Esto permite y justifica la introducción de los radios de
+conectividad como una estrategia lógica, beneficiando a los usuarios con poca eficiencia
+espectral y sin empeorar a los usuarios que no necesitan realizar el gasto de recursos.
+
+En la Figura \ref{fig:entorno_grid_radios} puede observarse una representación gráfica de un escenario en \textit{grid}
+con radios de conectividad alrededor de las \gls{ris}. Se ha considerado un radio de
+conectividad de 100 metros para este ejemplo, de manera arbitraria. Visualmente, se
+aprecia como sólo algunos usuarios lejanos al \gls{ap} se conectan directamente a una \gls{ris}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./images/entorno_grid_radios.png}
+    \captionsetup{justification=centering}
+    \caption[Despliegue en \textit{grid} con radios de conectividad]{Despliegue en \textit{grid} con radios de conectividad de 100 metros}
+    \label{fig:entorno_grid_radios}
+\end{figure}
+
+
+Esta nueva idea plantea la duda de cuál será el radio de conectividad óptimo. También
+surge la cuestión de qué parámetros afectan directamente al valor de este radio y cómo
+puede calcularse para cualquier escenario dado. Optimizar el radio de conectividad
+significa optimizar la \gls{se} del sistema.
+
+Para responder a la primera cuestión, se han ejecutado nuevas simulaciones en el mismo
+escenario variando el radio de conectividad para estudiar la \gls{se} resultante.
+De esta forma, puede determinarse el radio óptimo
+para ese escenario concreto. En la Figura \ref{fig:se_por_radio_conectividad}
+puede observarse los resultados al variar el radio de las \gls{ris} en pasos de 10 metros
+y haciendo uso de un algoritmo en el que se asume que un usuario tiene \gls{los} con
+el \gls{ap} si se encuentra a una distancia menor a 30 metros del mismo, y por tanto
+no se le asigna RIS. Además, no se ha limitado el número de \gls{ris}
+por usuario.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./images/radios_1000m_no_assign_limit.png}
+    \captionsetup{justification=centering}
+    \caption[Comparativa de \gls{se} en función del radio de las \gls{ris}]{Comparativa de \gls{se} en función del radio de las \gls{ris} en pasos de 10 metros}
+    \label{fig:se_por_radio_conectividad}
+\end{figure}
+
+Para poder determinar cual es el mejor radio al observar esta gráfica,
+se debe definir cuál es el umbral de \gls{se} que se desea maximizar.
+Por ejemplo, si queremos maximizar la \gls{se} para el 90\% de los usuarios,
+se puede observar en la gráfica que el radio óptimo se encuentra en torno
+a los 60 metros. Durante el resto del trabajo se asume que el objetivo
+de maximización de la \gls{se} se encuentra en el percentil 10, ya que el
+valor de \gls{se} media no refleja las condiciones de los usuarios
+con peor cobertura, mientras que optimizar el percentil 10 (CDF = 0,1) garantiza un
+nivel de servicio mínimo aceptable para el 90\% de la red.
+
+En la Figura \ref{fig:se_por_radio_conectividad_limit} se pueden ver los resultados de
+realizar la misma simulación anterior pero con un límite de una \gls{ris}
+por usuario. En este caso, el radio óptimo continúa siendo 60 metros. A su vez,
+se ve una mejora significativa en la \gls{se} media para todos usuarios al simular radios
+mayores y aplicar el algoritmo limitante.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./images/radios_1000m_assign_limit.png}
+    \captionsetup{justification=centering}
+    \caption[Comparativa de \gls{se} en función del radio de las \gls{ris} con límite de una \gls{ris} por usuario]{Comparativa de \gls{se} en función del radio de las \gls{ris} en pasos de 10 metros con límite de una \gls{ris} por usuario}
+    \label{fig:se_por_radio_conectividad_limit}
+\end{figure}
+
+Esto demuestra nuevamente que, con la configuración actual, asignar más de una \gls{ris} a un
+mismo usuario no aporta beneficios al sistema. Por esta razón, desde este punto 
+en adelante se asume que el máximo de \gls{ris} que se pueden asignar a un usuario es uno.
+
+Esta simulación ha sido realizada utilizando un factor de descentralización de 0,5. Tras
+ver los resultados, surge la duda de si el radio óptimo cambiaría si variase el factor de
+descentralización. En la Tabla \ref{tab:se_por_radio_conectividad_1} se muestran los
+resultados obtenidos al variar el factor de descentralización desde 0 hasta 1 en pasos de 0,1.
+Se aplica el mismo algoritmo de asignación de una \gls{ris} como máximo por usuario, 
+además de suponer que un usuario cercano al \gls{ap} no necesitará la asistencia de una \gls{ris}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        \textbf{Factor de descentralización} & \textbf{Radio óptimo [m]} & \textbf{SE (CDF = 0.1) [bit/s/Hz]} \\
+        \midrule
+        0.0 & 50 & 14.4257 \\
+        0.1 & 60 & 14.3742 \\
+        0.2 & 60 & 14.4364 \\
+        0.3 & 60 & 14.4116 \\
+        0.4 & 80 & 14.3370 \\
+        0.5 & 60 & 14.3660 \\
+        0.6 & 60 & 14.4195 \\
+        0.7 & 80 & 14.5210 \\
+        0.8 & 70 & 14.6386 \\
+        0.9 & 70 & 14.7908 \\
+        1.0 & 60 & 14.8655 \\
+        \bottomrule
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption{Radio de conectividad óptimo y \gls{se} en el percentil 10 en función del factor de descentralización}
+    \label{tab:se_por_radio_conectividad_1}
+\end{table}
+
+
+Los resultados obtenidos al comparar los factores demuestran que el radio
+óptimo de conectividad es prácticamente independiente del factor de
+descentralización, situándose en un rango entre 50 y 80 metros. La
+realidad es que, no existe un valor concreto de radio de conectividad óptimo
+para sistemas diferentes pero mismas características generales. No es
+el factor de descentralización el que define que el radio óptimo sea 60 u 80
+metros, son las características concretas exactas de cada entorno.
+
+La Tabla \ref{tab:golden_section_semillas} demuestra exactamente lo comentado. Se trata de una
+misma simulación realizada dos veces, únicamente modificando la semilla
+de aleatoriedad de generación de posiciones, estableciendo en ambas
+un factor de descentralización de 0.5. Se aplica un algoritmo de
+búsqueda del mejor radio basado en \textit{Golden Section Search},
+en la ventana de 50 a 80 metros \cite{press2007numerical}. Los resultados demuestran que
+el valor ideal fluctúa ligeramente en función de la posición exacta en la
+que se encuentren los usuarios con peor cobertura en un instante dado,
+ya que para un escenario resultó óptimo el radio de 64$\pm$2 metros,
+mientras que para otro alrededor de los 79$\pm$2 metros.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        \textbf{Semilla de aleatoriedad} & \textbf{Radio óptimo estimado [m]} \\
+        \midrule
+        1 & 64 \\
+        2 & 79 \\
+        \bottomrule
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption{Radio óptimo estimado por el algoritmo \textit{Golden Section Search} para dos escenarios con distintas topologías aleatorias pero mismas características generales}
+    \label{tab:golden_section_semillas}
+\end{table}
+
+Una vez definido el rango del radio de conectividad óptimo, surge
+la duda de cual es la diferencia de \gls{se} entre el mejor y peor
+radio en ese rango. Para responder a esto, sobre un mismo escenario,
+se ha calculado la \gls{se} para cada radio en el rango de 50 a
+80 metros en pasos de 5 metros. Los resultados demuestran que la
+diferencia de \gls{se} entre el mejor y el peor radio
+dentro de esta ventana operativa es inferior al 0,6\%, pueden
+verse en la Tabla \ref{tab:robustez_50_80}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        \textbf{Radio de conectividad [m]} & \textbf{SE (CDF = 0.1) [bit/s/Hz]} \\
+        \midrule
+        50 & 14.0692 \\
+        55 & 14.0516 \\
+        60 & 14.0907 \\
+        65 & 14.1009 \\
+        70 & 14.1080 \\
+        75 & 14.0692 \\
+        80 & 14.0310 \\
+        \bottomrule
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption{Análisis de robustez: Variación de la \gls{se} en el percentil 10 al modificar el radio de conectividad en el rango de 50 a 80 metros.}
+    \label{tab:robustez_50_80}
+\end{table}
+
+Estos datos demuestran que no es necesario implementar algoritmos
+computacionalmente costosos que recalculen el radio óptimo en tiempo real
+a medida que los usuarios se mueven. Establecer un radio de asignación estático
+dentro de un rango eficiente garantiza un rendimiento superior al 99\% de la
+capacidad máxima del sistema para los usuarios más
+desfavorecidos. Esto simplifica enormemente la gestión de los
+recursos de la red y favorece la adopción de un algoritmo
+sencillo de asignación de radios como el que se presenta
+en el presente trabajo.
+
+Un parámetro importante que sí afecta el valor resultante del radio
+de conectividad óptimo es la distancia entre los \gls{ap}. En las simulaciones anteriores
+los \gls{ap} estaban separados 200 metros, desplegados en un área de 1000 metros cuadrados.
+La Figura \ref{fig:RadioOptimo_vs_Area} muestra una gráfica que representa cómo afecta al radio de
+conectividad óptimo modificar este área desde 250 metros cuadrados hasta
+2000 metros cuadrados, variando acordemente la distancia entre \gls{ap} para
+mantener la misma densidad de los mismos.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/RadioOptimo_vs_Area.png}
+    \captionsetup{justification=centering}
+    \caption[Impacto del tamaño del área sobre el radio de conectividad óptimo]{Impacto del tamaño del área sobre el radio de conectividad óptimo}
+    \label{fig:RadioOptimo_vs_Area}
+\end{figure}
+
+Y en la Tabla \ref{tab:analisis_radio_optimo_area} se puede observar el
+detalle de los valores de \gls{se} para cada radio de conectividad obtenido
+en las simulaciónes.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        \textbf{Lado del área [m]} & \textbf{Radio óptimo [m]} & \textbf{Mejor \gls{se} (CDF = 0.1) [bit/s/Hz]} \\
+        \midrule
+        250  & 20  & 25.9227 \\
+        500  & 30  & 20.1127 \\
+        750  & 50  & 16.6893 \\
+        1000 & 60  & 14.1260 \\
+        1250 & 80  & 11.9816 \\
+        1500 & 90  & 10.6474 \\
+        1750 & 90  & 9.1959  \\
+        2000 & 100 & 8.0265  \\
+        \bottomrule
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption{Análisis del impacto del tamaño del área sobre el radio de conectividad}
+    \label{tab:analisis_radio_optimo_area}
+\end{table}
+
+
+Como puede observarse, el crecimiento del radio es prácticamente lineal a medida que
+el área de simulación aumenta. Dentro de esta ventana de 250 a 2000 metros
+cuadrados, el radio de conectividad óptimo se sitúa en un rango entre
+20 y 100 metros. Se puede afirmar que el la distancia entre \gls{ap} es
+un parámetro influyente a la hora de determinar el radio de conectividad.
+
+El siguiente parámetro digno de estudio es $\tau_c$, ya que es un factor
+limitante en cuanto al uso de recursos del sistema. Se espera que un
+valor bajo dé como resultado que a los usuarios no les beneficie conectarse
+a una \gls{ris}. Además, inicialmente se planteó la hipótesis de que, a mayor cantidad de recursos
+disponibles en el sistema (mayor $\tau_c$), resultaría beneficioso para los usuarios
+conectarse a múltiples \gls{ris} simultáneamente, dado que el impacto negativo de la
+inversión de pilotos en estimación de canal quedaría diluido. En la Figura \ref{fig:RadioOptimo_vs_Tauc}
+se muestran los resultados de las simulaciones, obteniendo el mejor
+radio de conectividad para el rango de $\tau_c$ de entre 1000 y 20000
+símbolos, utilizando el algoritmo exclusivo de asignación (máximo 1 \gls{ris} por usuario).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/RadioOptimo_vs_Tauc.png}
+    \captionsetup{justification=centering}
+    \caption[Impacto del tamaño del bloque de coherencia sobre el radio de conectividad]{Impacto del tamaño del bloque de coherencia sobre el radio de conectividad}
+    \label{fig:RadioOptimo_vs_Tauc}
+\end{figure}
+
+En la Tabla \ref{tab:analisis_radio_optimo_tauc} se muestran los resultados con la \gls{se}
+correspondiente a cada radio mostrado en la figura anterior.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        \textbf{$\tau_c$} & \textbf{Radio óptimo [m]} & \textbf{Mejor \gls{se} (CDF = 0.1) [bit/s/Hz]} \\
+        \midrule
+        1000  & 0  & 13.4193 \\
+        4000  & 40 & 13.9773 \\
+        7000  & 60 & 14.1429 \\
+        10000 & 60 & 14.0137 \\
+        13000 & 70 & 14.2963 \\
+        17000 & 70 & 14.1881 \\
+        20000 & 70 & 14.1412 \\
+        \bottomrule
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption{Análisis del impacto del parámetro $\tau_c$ sobre el radio de conectividad}
+    \label{tab:analisis_radio_optimo_tauc}
+\end{table}
+
+Estos resultados demuestran que, limitando la conexión a una sola \gls{ris}, el radio óptimo
+se estabiliza rápidamente en torno a los 70 metros. A esta distancia, es geométricamente 
+imposible que las áreas de cobertura de las \gls{ris} (separadas por 250 metros en el \textit{grid}) 
+se solapen. Para comprobar si la hipótesis inicial era cierta y un escenario con solapamiento masivo 
+ofrece mejores resultados, se forzó una simulación comparativa directa en la que el radio 
+de conectividad se incrementó deliberadamente entre 140 y 250 metros (asegurando el solapamiento total) 
+para un $\tau_c = 20000$, evaluando tanto el algoritmo exclusivo como uno inclusivo (ilimitadas \gls{ris} por usuario). 
+Los resultados revelaron de manera contraintuitiva que el algoritmo inclusivo arroja peores valores de
+\gls{se} en el percentil 10. La explicación radica en un problema de distribución de recursos: 
+al permitir conexiones ilimitadas, los usuarios geográficamente céntricos acaparan la asistencia 
+de múltiples \gls{ris}, dejando a los usuarios más desfavorecidos aislados sin asistencia. Al forzar 
+una relación exclusiva 1 a 1, el algoritmo logra un reparto equitativo de las \gls{ris} que eleva 
+sistemáticamente la calidad de servicio del 10\% inferior de la red. En consecuencia, la limitación 
+de una \gls{ris} por usuario se confirma como la estrategia óptima para la métrica establecida.
+
+Por último, otro parámetro que debe ser estudiado es el número de 
+metaátomos de las \gls{ris} ($N_{\text{RIS}}$). Un mayor número de ellos implica una mejora
+directa del canal reflejado, pero al mismo tiempo exige una mayor inversión de recursos
+para su estimación. Se espera que a medida que aumenten los metaátomos,
+menor sea el radio de conectividad óptimo, ya que la potencia de asistencia de la \gls{ris} 
+se vuelve tan grande que compensa concentrarla en distancias cortas. En la Figura \ref{fig:RadioOptimo_vs_Atomos}
+pueden verse los resultados aplicando el algoritmo de asignación exclusivo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/RadioOptimo_vs_Atomos.png}
+    \captionsetup{justification=centering}
+    \caption[Impacto del número de metaátomos sobre el radio de conectividad]{\gls{se} vs. número de metaátomos}
+    \label{fig:RadioOptimo_vs_Atomos}
+\end{figure}
+
+Como se hipotetizaba, el radio óptimo de conectividad decrece drásticamente.
+La Tabla \ref{tab:analisis_radio_optimo_atomos} demuestra
+que un gran número de metaátomos con un radio de conectividad de \gls{ris}
+bajo proporciona las mejores prestaciones globales de todo el estudio.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        \textbf{$N_{\text{RIS}}$} & \textbf{Radio óptimo [m]} & \textbf{Mejor \gls{se} (CDF = 0.1) [bit/s/Hz]} \\
+        \midrule
+        4   & 220 & 10.7154 \\
+        16  & 140 & 12.5541 \\
+        32  & 80  & 13.1407 \\
+        64  & 70  & 14.2305 \\
+        128 & 50  & 15.0671 \\
+        256 & 30  & 15.8056 \\
+        \bottomrule
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption{Análisis del impacto del número de metaátomos de las \gls{ris} sobre el radio de conectividad y la eficiencia espectral}
+    \label{tab:analisis_radio_optimo_atomos}
+\end{table}
+
+Estos resultados consolidan la visión de que, en un despliegue de celdas libres con una gran 
+densidad de antenas, la estrategia ganadora consiste en maximizar la capacidad focalizada 
+de cada \gls{ris} (gran cantidad de metaátomos) manteniéndolas en radios de actuación cortos y exclusivos.

@@ -1,0 +1,37 @@
+=================================================================================
+CONCLUSIONES: OPTIMIZACIÓN DE RADIO CON SEMILLAS FIJAS (Golden Section Search)
+=================================================================================
+Fecha: 25-May-2026
+
+Parámetros de simulación:
+- Factor de descentralización (center_grid_factor): 0.5
+- Modo de asignación de RIS: Exclusivo (1 RIS max por UE)
+- Setups por simulación: 50
+- Métrica de optimización: Maximizar Eficiencia Espectral (SE) en CDF = 0.1
+
+Resultados de la búsqueda (Algoritmo de la Sección Dorada):
+
+1. Escenario con Semilla Global = 42
+   -> El algoritmo convergió hacia un óptimo local.
+   -> RADIO ÓPTIMO: 64 metros
+
+2. Escenario con Semilla Global = 999
+   -> El algoritmo convergió hacia un óptimo local distinto.
+   -> RADIO ÓPTIMO: 79 metros
+
+=================================================================================
+CONCLUSIÓN TÉCNICA
+=================================================================================
+Al fijar la semilla aleatoria, eliminamos el ruido de Montecarlo y el algoritmo 
+de búsqueda matemática funciona a la perfección. Sin embargo, la discrepancia en 
+los resultados finales (64m frente a 79m) demuestra empíricamente que:
+
+1. El radio óptimo es altamente sensible a la topología específica de la red.
+2. Dependiendo de dónde caigan los usuarios con peor cobertura (el 10% peor), 
+   el sistema puede preferir un radio más conservador (64m) para evitar 
+   interferencia piloto, o un radio más amplio (79m) para intentar alcanzar 
+   a esos usuarios alejados a expensas de un ligero aumento de la interferencia.
+3. No existe un único "radio mágico" estático. El rango óptimo operativo se 
+   encuentra entre los 60 y 80 metros, pero el valor exacto fluctúa dependiendo 
+   de la distribución geométrica de los Puntos de Acceso y los Usuarios en ese 
+   instante concreto.

@@ -1,0 +1,14 @@
+=================================================================
+   PRUEBA DEL ALGORITMO BASADO EN INTERPOLACION (LUT)
+=================================================================
+
+ESCENARIO 1: tau_c = 8000 | D_AP = 200.0 m | N_RIS = 32
+  Radio Interpolado (LUT): 60 m  -> SE = 14.9789
+  Mejor Radio Absoluto:    50 m  -> SE = 15.1023
+  Perdida por usar la LUT: 0.82%
+-----------------------------------------------------------------
+ESCENARIO 2: tau_c = 15000 | D_AP = 300.0 m | N_RIS = 128
+  Radio Interpolado (LUT): 70 m  -> SE = 13.3792
+  Mejor Radio Absoluto:    60 m  -> SE = 13.3967
+  Perdida por usar la LUT: 0.13%
+-----------------------------------------------------------------

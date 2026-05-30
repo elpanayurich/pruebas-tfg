@@ -1,0 +1,99 @@
+=================================================================
+   ANALISIS: RADIO OPTIMO (CDF=0.1) vs TAMAÑO DE TUA_C (tau_c)
+=================================================================
+Factor 0.5 | Modo Inclusivo (Multiple RIS per UE) | 50 Setups
+
+--- TAUC: 1000 m ---
+  Radio   0 m -> SE = 13.4193
+  Radio  10 m -> SE = 13.4189
+  Radio  20 m -> SE = 13.3469
+  Radio  30 m -> SE = 13.1207
+  Radio  40 m -> SE = 12.7710
+  Radio  50 m -> SE = 12.1048
+  Radio  60 m -> SE = 11.3336
+  Radio  70 m -> SE = 10.2360
+  Radio  80 m -> SE = 9.0929
+=> OPTIMO PARA 1000 m: Radio = 0 m (SE = 13.4193)
+
+--- TAUC: 4000 m ---
+  Radio   0 m -> SE = 13.7195
+  Radio  10 m -> SE = 13.8033
+  Radio  20 m -> SE = 13.8528
+  Radio  30 m -> SE = 13.9020
+  Radio  40 m -> SE = 13.9773
+  Radio  50 m -> SE = 13.9305
+  Radio  60 m -> SE = 13.8184
+  Radio  70 m -> SE = 13.6478
+  Radio  80 m -> SE = 13.4151
+=> OPTIMO PARA 4000 m: Radio = 40 m (SE = 13.9773)
+
+--- TAUC: 7000 m ---
+  Radio   0 m -> SE = 13.7241
+  Radio  10 m -> SE = 13.7294
+  Radio  20 m -> SE = 13.7726
+  Radio  30 m -> SE = 13.8666
+  Radio  40 m -> SE = 14.0129
+  Radio  50 m -> SE = 14.0881
+  Radio  60 m -> SE = 14.1429
+  Radio  70 m -> SE = 14.0109
+  Radio  80 m -> SE = 13.8621
+=> OPTIMO PARA 7000 m: Radio = 60 m (SE = 14.1429)
+
+--- TAUC: 10000 m ---
+  Radio   0 m -> SE = 13.6163
+  Radio  10 m -> SE = 13.6163
+  Radio  20 m -> SE = 13.7063
+  Radio  30 m -> SE = 13.7943
+  Radio  40 m -> SE = 13.9549
+  Radio  50 m -> SE = 13.9955
+  Radio  60 m -> SE = 14.0137
+  Radio  70 m -> SE = 13.9953
+  Radio  80 m -> SE = 13.9711
+=> OPTIMO PARA 10000 m: Radio = 60 m (SE = 14.0137)
+
+--- TAUC: 13000 m ---
+  Radio  70 m -> SE = 14.2963
+  Radio  80 m -> SE = 14.2961
+  Radio  90 m -> SE = 14.1793
+  Radio 100 m -> SE = 14.0798
+  Radio 110 m -> SE = 14.0340
+  Radio 120 m -> SE = 13.9668
+  Radio 130 m -> SE = 13.9066
+  Radio 140 m -> SE = 13.8151
+=> OPTIMO PARA 13000 m: Radio = 70 m (SE = 14.2963)
+
+--- TAUC: 17000 m ---
+  Radio  70 m -> SE = 14.1881
+  Radio  80 m -> SE = 14.1603
+  Radio  90 m -> SE = 14.0820
+  Radio 100 m -> SE = 14.0483
+  Radio 110 m -> SE = 13.9900
+  Radio 120 m -> SE = 13.9806
+  Radio 130 m -> SE = 13.8607
+  Radio 140 m -> SE = 13.8560
+=> OPTIMO PARA 17000 m: Radio = 70 m (SE = 14.1881)
+
+--- TAUC: 20000 m ---
+  Radio  70 m -> SE = 14.1412
+  Radio  80 m -> SE = 14.1219
+  Radio  90 m -> SE = 14.0245
+  Radio 100 m -> SE = 14.0599
+  Radio 110 m -> SE = 13.9751
+  Radio 120 m -> SE = 13.9171
+  Radio 130 m -> SE = 13.9751
+  Radio 140 m -> SE = 13.9617
+=> OPTIMO PARA 20000 m: Radio = 70 m (SE = 14.1412)
+
+=================================================================
+TABLA RESUMEN FINAL
+=================================================================
+tau_c | Radio Optimo [m] | Mejor SE (CDF=0.1) [bit/s/Hz]
+-----------------------------------------------------------------
+1000             | 0                | 13.4193
+4000             | 40               | 13.9773
+7000             | 60               | 14.1429
+10000            | 60               | 14.0137
+13000            | 70               | 14.2963
+17000            | 70               | 14.1881
+20000            | 70               | 14.1412
+=================================================================

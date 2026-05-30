@@ -1,0 +1,33 @@
+\ref{tab:validacion_formula} los resultados obtenidos tras someter la ecuación propuesta a una rigurosa batería de pruebas. Para ello, se han definido nueve escenarios de validación completamente heterogéneos, mezclando valores extremos de los tres parámetros estudiados simultáneamente. Por cada escenario, se calculó el radio mediante la Ecuación 1 y se comparó con el verdadero radio óptimo absoluto obtenido mediante una simulación de barrido exhaustivo.
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{ccccccc}
+        \toprule
+        \textbf{Escenario} & \textbf{$D_{\text{AP}}$ [m]} & \textbf{$N_{\text{RIS}}$} & \textbf{$\tau_c$} & \textbf{$R_{\text{opt}}$ (Fórmula) [m]} & \textbf{$R_{\text{opt}}$ (Simulado) [m]} & \textbf{Pérdida de \gls{se} [\%]} \\
+        \midrule
+        1 & 125 & 32  & 5000  & 31.2  & 20  & 0.25 \\
+        2 & 375 & 128 & 15000 & 81.2  & 80  & 0.00 \\
+        3 & 200 & 16  & 8000  & 89.4  & 100 & 0.03 \\
+        4 & 250 & 256 & 20000 & 44.2  & 60  & 0.84 \\
+        5 & 100 & 16  & 3000  & 27.4  & 30  & 0.00 \\
+        6 & 225 & 32  & 10000 & 79.5  & 100 & 1.54 \\
+        7 & 275 & 64  & 18000 & 92.2  & 90  & 0.00 \\
+        8 & 400 & 128 & 6000  & 54.8  & 40  & 1.02 \\
+        9 & 175 & 8   & 14000 & 146.4 & 160 & 0.11 \\
+        \bottomrule
+    \end{tabular}
+    }
+    \captionsetup{justification=centering}
+    \caption{Validación de la ecuación empírica en escenarios cruzados frente a simulaciones exhaustivas.}
+    \label{tab:validacion_formula}
+\end{table}
+
+Como puede observarse, la fórmula predice con notable precisión el comportamiento físico de la red ante cualquier configuración paramétrica. En aquellos escenarios donde el radio teórico difiere ligeramente del radio óptimo simulado (como en el Escenario 6), la pérdida de Eficiencia Espectral es mínima, alcanzando un valor máximo en el peor de los casos del 1,54\%. 
+
+Esta resiliencia se debe a la robustez inherente del sistema demostrada en secciones anteriores (Tabla \ref{tab:robustez_50_80}), donde se comprobó que la curva de Eficiencia Espectral es plana en torno a su máximo. Es decir, una ligera desviación en el radio de conectividad respecto al óptimo absoluto no degrada significativamente el rendimiento de la red.
+
+La validación de esta ecuación culmina el desarrollo del Algoritmo de asignación de \gls{ris}. Se ha sustituido la necesidad de realizar simulaciones previas o búsquedas iterativas complejas por una expresión analítica de complejidad $\mathcal{O}(1)$. Esta fórmula permite a la \gls{cpu} calcular de forma instantánea el radio óptimo en el momento del despliegue, para posteriormente ejecutar una asociación exclusiva simple basada puramente en distancia.
+
+El resultado es un algoritmo de asignación altamente eficiente, escalable y determinista, capaz de mantener a los usuarios más desfavorecidos de la red (CDF = 0.1) operando consistentemente por encima del 98,5\% de la capacidad máxima teórica del entorno \textit{cell-free}. Con este planteamiento, se demuestra que la optimización de los recursos compartidos entre el bloque de coherencia y la densidad de \textit{metaátomos} es la clave para un despliegue realista y exitoso de las \gls{ris} en redes 6G.

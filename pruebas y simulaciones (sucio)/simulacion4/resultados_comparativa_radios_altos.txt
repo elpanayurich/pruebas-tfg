@@ -1,0 +1,17 @@
+=================================================================
+   COMPARATIVA: INCLUSIVO vs EXCLUSIVO (Radios 140m - 250m)
+   tau_c = 20000, N_RIS = 64, 50 Setups
+=================================================================
+
+Radio 140 m -> EXCLUSIVO: 13.9188 | INCLUSIVO: 13.8680
+Radio 150 m -> EXCLUSIVO: 13.9321 | INCLUSIVO: 13.8512
+Radio 160 m -> EXCLUSIVO: 14.0155 | INCLUSIVO: 13.9757
+Radio 170 m -> EXCLUSIVO: 14.0061 | INCLUSIVO: 13.9407
+Radio 180 m -> EXCLUSIVO: 13.9949 | INCLUSIVO: 13.8401
+Radio 190 m -> EXCLUSIVO: 13.9949 | INCLUSIVO: 13.8858
+Radio 200 m -> EXCLUSIVO: 13.9631 | INCLUSIVO: 13.8162
+Radio 210 m -> EXCLUSIVO: 13.9631 | INCLUSIVO: 13.8309
+Radio 220 m -> EXCLUSIVO: 13.9631 | INCLUSIVO: 13.8444
+Radio 230 m -> EXCLUSIVO: 13.9631 | INCLUSIVO: 13.7789
+Radio 240 m -> EXCLUSIVO: 13.9631 | INCLUSIVO: 13.7683
+Radio 250 m -> EXCLUSIVO: 13.9631 | INCLUSIVO: 13.7320
