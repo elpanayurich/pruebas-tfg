@@ -1,4 +1,4 @@
-# Código del Algoritmo Final de Asignación de RIS a usuarios basado en Radios de Conectividad - TFG
+# Código del Algoritmo Final de Asignación de RIS a Usuarios Basado en Radios de Conectividad - TFG
 
 Esta carpeta contiene la implementación del algoritmo de asignación de RIS a usuarios para entornos *cell-free* mMIMO asistidos por RIS, propuesto como conclusión de este TFG.
 
